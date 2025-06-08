@@ -1,4 +1,4 @@
-package com.example.javaprojet.model;
+package gui.javafrontend.enums;
 
 public enum MessageType {
     CHAT,

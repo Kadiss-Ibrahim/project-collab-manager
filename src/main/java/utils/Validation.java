@@ -39,7 +39,7 @@ public class Validation {
         return true;
     }
     public static boolean validatePassword(PasswordField password, Label label) {
-        if (password.getText().length() < 8) {
+        if (password.getText().length() < 6) {
             highlightError(password);
             showError("Le mot de passe doit avoir au moins 8 caractères",label);
             return false;

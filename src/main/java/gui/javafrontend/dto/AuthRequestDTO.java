@@ -1,16 +1,25 @@
-package com.example.javaprojet.dto;
+package gui.javafrontend.dto;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class AuthRequestDTO {
     private String email;
     private String password;
+
+    public AuthRequestDTO(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public AuthRequestDTO() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
 }
 
 
