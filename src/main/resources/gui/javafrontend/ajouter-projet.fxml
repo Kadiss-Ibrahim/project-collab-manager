@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: bisque;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.javafrontend.AjouterProjetController">
+    <left>
+        <fx:include source="menu.fxml" />
+    </left>
+    <center>
+        <AnchorPane prefHeight="600.0" prefWidth="310.0" style="-fx-background-color: white;" stylesheets="@../../style/ajouterTacheStyle.css" BorderPane.alignment="CENTER">
+            <children>
+
+                <ImageView fx:id="image2" fitHeight="119.0" fitWidth="117.0" layoutX="569.0" layoutY="8.0">
+                    <image>
+                        <Image url="@../../img/logo-uhp.png" />
+                    </image>
+                </ImageView>
+
+
+                <AnchorPane prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #f9f9f9;" xmlns:fx="http://javafx.com/fxml/1">
+                    <children>
+                        <VBox alignment="TOP_LEFT" layoutX="60.0" layoutY="30.0" prefHeight="557.0" prefWidth="474.0" spacing="10">
+                            <padding>
+                                <Insets bottom="20" left="30" right="30" top="20" />
+                            </padding>
+
+                            <TextField fx:id="nomCourtField" promptText="Nom Court" />
+                            <TextField fx:id="nomLongField" promptText="Nom Long" />
+                            <TextArea fx:id="descriptionField" prefRowCount="3" promptText="Description" />
+                            <TextField fx:id="themeField" promptText="Thème" />
+                            <TextField fx:id="typeField" promptText="Type" />
+
+                            <CheckBox fx:id="estPublicCheck" text="Projet Public" />
+
+                            <ComboBox fx:id="statutProjetCombo" promptText="Statut">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="EN_ATTENTE" />
+                                        <String fx:value="VALIDE" />
+                                        <String fx:value="REJETE" />
+                                    </FXCollections>
+                                </items>
+                            </ComboBox>
+
+                            <DatePicker fx:id="dateCreationPicker" promptText="Date de création" />
+                            <DatePicker fx:id="dateAcceptationPicker" promptText="Date d'acceptation" />
+                            <DatePicker fx:id="dateCloturePicker" promptText="Date de clôture" />
+
+                            <ComboBox fx:id="groupeCombo" promptText="Groupe">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="Informatique" />
+                                        <String fx:value="Systeme-Embarquee" />
+                                        <String fx:value="Chimie" />
+                                        <String fx:value="Biologie" />
+                                    </FXCollections>
+                                </items>
+                            </ComboBox>
+                        </VBox>
+                  <Button fx:id="ajouterProjetButton" layoutX="534.0" layoutY="507.0" onAction="#ajouterProjet" prefHeight="30.0" prefWidth="152.0" style="-fx-background-color: #2C3E50; -fx-text-fill: white;" text="Ajouter le Projet" />
+                  <Label fx:id="ajouterProjetSucces" layoutX="560.0" layoutY="465.0" />
+                    </children>
+                </AnchorPane>
+
+
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

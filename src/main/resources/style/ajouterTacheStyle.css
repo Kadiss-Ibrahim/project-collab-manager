@@ -1,0 +1,50 @@
+/* Appliquer un fond général */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #F4F6F9;
+}
+
+/* Style général des boutons */
+.button {
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #3498db;
+}
+
+/* Style du Spinner */
+.spinner {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-padding: 4px;
+}
+
+/* Style du ComboBox */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-padding: 4px;
+}
+
+.combo-box .list-cell {
+    -fx-font-size: 13px;
+}
+
+/* Style du DatePicker */
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-padding: 4px;
+}
+
+.date-picker .text-field {
+    -fx-font-size: 13px;
+}

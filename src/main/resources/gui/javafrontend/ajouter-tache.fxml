@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: bisque;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.javafrontend.AjouterTacheController">
+    <left>
+        <fx:include source="menu.fxml" />
+    </left>
+    <center>
+        <AnchorPane prefHeight="600.0" prefWidth="310.0" style="-fx-background-color: white;" stylesheets="@../../style/ajouterTacheStyle.css" BorderPane.alignment="CENTER">
+            <children>
+
+                <ImageView fx:id="image2" fitHeight="119.0" fitWidth="117.0" layoutX="569.0" layoutY="8.0">
+                    <image>
+                        <Image url="@../../img/logo-uhp.png" />
+                    </image>
+                </ImageView>
+
+
+                <Label layoutX="200" layoutY="20" style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Ajouter une Tâche" />
+
+                <Label layoutX="50" layoutY="80" text="Titre:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <TextField fx:id="titreField" layoutX="150" layoutY="75" prefWidth="300" />
+
+                <Label layoutX="50" layoutY="130" text="Description:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <TextArea fx:id="descriptionField" layoutX="150" layoutY="125" prefHeight="80" prefWidth="300" />
+
+                <Label layoutX="50" layoutY="220" text="Date Début:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <DatePicker fx:id="dateDebutPicker" layoutX="150" layoutY="215" />
+
+                <Label layoutX="50" layoutY="260" text="Date Fin:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <DatePicker fx:id="dateFinPicker" layoutX="150" layoutY="255" />
+
+                <Label layoutX="50" layoutY="300" text="Priorité:">
+                <font>
+                    <Font size="18.0" />
+                </font></Label>
+                <Spinner fx:id="prioriteSpinner" layoutX="150" layoutY="295" prefWidth="100" />
+
+                <Label layoutX="50" layoutY="340" text="Difficulté:">
+                    <font>
+                        <Font size="18.0" />
+                    </font></Label>
+                <Spinner fx:id="difficulteSpinner" layoutX="150" layoutY="335" prefWidth="100" />
+
+                <Label layoutX="50" layoutY="380" text="État:">
+                    <font>
+                        <Font size="18.0" />
+                    </font></Label>
+                <ComboBox fx:id="etatComboBox" layoutX="150" layoutY="375" prefWidth="200">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Non commencé" />
+                            <String fx:value="En cours" />
+                            <String fx:value="Terminé" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label layoutX="50" layoutY="420" text="Notation:">
+                    <font>
+                        <Font size="18.0" />
+                    </font></Label>
+                <Spinner fx:id="notationSpinner" layoutX="150" layoutY="415" prefWidth="100" />
+
+                <Button layoutX="250" layoutY="480" onAction="#ajouterTache" style="-fx-background-color: #2c3e50; -fx-text-fill: white;" text="Ajouter" />
+            <Label fx:id="ajouterSucces" layoutX="232.0" layoutY="534.0" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
