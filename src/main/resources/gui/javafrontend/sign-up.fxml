@@ -36,7 +36,7 @@
                   <Font size="11.0" />
                </font>
             </Label>
-            <Button fx:id="registerButton" layoutX="142.0" layoutY="505.0" mnemonicParsing="false" onAction="#register" prefHeight="52.0" prefWidth="250.0" style="-fx-background-color: #45b3fc;" text="Register">
+            <Button fx:id="registerButton" layoutX="142.0" layoutY="505.0" mnemonicParsing="false" onAction="#register" prefHeight="52.0" prefWidth="250.0" style="-fx-background-color: #45b3fc;" text="Enregistrer">
                <font>
                   <Font size="14.0" />
                </font>
