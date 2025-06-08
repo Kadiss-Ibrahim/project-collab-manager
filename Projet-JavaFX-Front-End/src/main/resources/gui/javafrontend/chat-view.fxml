@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.ChatController" >
+
+    <!-- Sidebar -->
+    <left>
+        <VBox alignment="TOP_CENTER" spacing="15" styleClass="sidebar">
+            <ImageView fitHeight="100" fitWidth="100" />
+            <Button text="PROFILE" />
+            <Button text="CHAT" />
+            <Button text="CALENDAR" />
+            <Button text="DOCUMENTS" />
+            <Button text="SETTING" />
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <HBox spacing="10" style="-fx-padding: 20;">
+            <!-- Contact List -->
+            <VBox spacing="10">
+                <TextField promptText="Search" />
+                <ListView fx:id="chatList" prefWidth="200" />
+            </VBox>
+
+            <!-- Chat Panel -->
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <Label styleClass="chat-title" text="Gold Coast" />
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <VBox fx:id="chatBox" spacing="10" style="-fx-padding: 10;" />
+                </ScrollPane>
+                <HBox spacing="10">
+                    <Button text="Welcome" />
+                    <Button text="Hello there." />
+                </HBox>
+                <HBox spacing="10">
+                    <TextField fx:id="messageField" promptText="Type Message" HBox.hgrow="ALWAYS" />
+                    <Button text="Send" />
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
