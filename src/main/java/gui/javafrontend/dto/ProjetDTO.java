@@ -1,14 +1,17 @@
 package gui.javafrontend.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import gui.javafrontend.enums.StatutProjet;
 
 import java.sql.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProjetDTO {
     private Long id;
-    private Long createurId;  // Correction: camelCase au lieu de CreateurId
-    private Long groupeId;    // Correction: camelCase au lieu de GroupeId
+    private Long createurId;
+    @JsonProperty("groupeId")  // Important pour la sérialisation JSON
+    private Long groupeId;// Correction: camelCase au lieu de CreateurId
+
     private Long utilisateurId; // Ajouté pour les opérations de mise à jour/suppression
     private Long adminId;     // Ajouté pour les opérations d'administration
     private String nomCourt;
@@ -181,5 +184,47 @@ public class ProjetDTO {
 
     public void setDateCloture(Date dateCloture) {
         this.dateCloture = dateCloture;
+    }
+
+    /**
+     * Gets the project status as a string
+     * @return the status string representation
+     */
+    public String getStatut() {
+        return statutProjet != null ? statutProjet.name() : null;
+    }
+
+    /**
+     * Sets the project status from a string
+     * @param statut the status string
+     */
+    public void setStatut(String statut) {
+        if (statut != null) {
+            try {
+                this.statutProjet = StatutProjet.valueOf(statut.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                // Handle invalid status values gracefully
+                System.err.println("Invalid status value: " + statut);
+                this.statutProjet = null;
+            }
+        } else {
+            this.statutProjet = null;
+        }
+    }
+
+    /**
+     * Gets the project name (alias for getNomCourt for consistency)
+     * @return the short name of the project
+     */
+    public String getNom() {
+        return nomCourt;
+    }
+
+    /**
+     * Sets the project name (alias for setNomCourt for consistency)
+     * @param nom the short name of the project
+     */
+    public void setNom(String nom) {
+        this.nomCourt = nom;
     }
 }

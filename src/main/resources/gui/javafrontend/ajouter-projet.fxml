@@ -3,64 +3,103 @@
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: bisque;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.javafrontend.AjouterProjetController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f5f5f5;"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.javafrontend.AjouterProjetController">
+
     <left>
         <fx:include source="menu.fxml" />
     </left>
+
     <center>
-        <AnchorPane prefHeight="600.0" prefWidth="310.0" style="-fx-background-color: white;" stylesheets="@../../style/ajouterTacheStyle.css" BorderPane.alignment="CENTER">
-            <children>
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: #f5f5f5;">
+            <content>
+                <VBox fx:id="mainContainer" alignment="TOP_CENTER" prefWidth="700.0"
+                      style="-fx-background-color: white; -fx-background-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                    <padding>
+                        <Insets bottom="30" left="40" right="40" top="30" />
+                    </padding>
 
-                <ImageView fx:id="image2" fitHeight="119.0" fitWidth="117.0" layoutX="569.0" layoutY="8.0">
-                    <image>
-                        <Image url="@../../img/logo-uhp.png" />
-                    </image>
-                </ImageView>
+                    <!-- Header Section -->
+                    <HBox alignment="CENTER" spacing="20">
+                        <VBox alignment="CENTER_LEFT">
+                            <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                                   text="Créer un nouveau projet" />
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"
+                                   text="Remplissez les informations ci-dessous pour créer votre projet" />
+                        </VBox>
+                        <ImageView fx:id="image2" fitHeight="80.0" fitWidth="80.0" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/logo-uhp.png" />
+                            </image>
+                        </ImageView>
+                    </HBox>
 
+                    <Separator style="-fx-background-color: #ecf0f1;">
+                        <VBox.margin>
+                            <Insets bottom="20" top="20" />
+                        </VBox.margin>
+                    </Separator>
 
-                <AnchorPane prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #f9f9f9;" xmlns:fx="http://javafx.com/fxml/1">
-                    <children>
-                        <VBox alignment="TOP_LEFT" layoutX="60.0" layoutY="30.0" prefHeight="557.0" prefWidth="474.0" spacing="10">
-                            <padding>
-                                <Insets bottom="20" left="30" right="30" top="20" />
-                            </padding>
+                    <!-- Form Section -->
+                    <GridPane hgap="20" vgap="15" alignment="CENTER">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="300" prefWidth="300" />
+                            <ColumnConstraints minWidth="300" prefWidth="300" />
+                        </columnConstraints>
 
-                            <TextField fx:id="nomCourtField" promptText="Nom Court" />
-                            <TextField fx:id="nomLongField" promptText="Nom Long" />
-                            <TextArea fx:id="descriptionField" prefRowCount="3" promptText="Description" />
-                            <TextField fx:id="themeField" promptText="Thème" />
-                            <TextField fx:id="typeField" promptText="Type" />
+                        <!-- Première ligne -->
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #34495e;" text="Nom court *" />
+                            <TextField fx:id="nomCourtField" promptText="Nom court du projet (max 50 car.)"
+                                       style="-fx-font-size: 14px; -fx-padding: 10px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+                        </VBox>
 
-                            <CheckBox fx:id="estPublicCheck" text="Projet Public" />
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #34495e;" text="Nom long *" />
+                            <TextField fx:id="nomLongField" promptText="Nom complet du projet (max 200 car.)"
+                                       style="-fx-font-size: 14px; -fx-padding: 10px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+                        </VBox>
 
-                            <ComboBox fx:id="statutProjetCombo" promptText="Statut">
-                                <items>
-                                    <FXCollections fx:factory="observableArrayList">
-                                        <String fx:value="EN_ATTENTE" />
-                                        <String fx:value="VALIDE" />
-                                        <String fx:value="REJETE" />
-                                    </FXCollections>
-                                </items>
-                            </ComboBox>
+                        <!-- Deuxième ligne - Description sur toute la largeur -->
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #34495e;" text="Description *" />
+                            <TextArea fx:id="descriptionField" prefRowCount="4" promptText="Description détaillée du projet..."
+                                      style="-fx-font-size: 14px; -fx-padding: 10px; -fx-border-radius: 5px; -fx-background-radius: 5px;"
+                                      wrapText="true" />
+                        </VBox>
 
-                            <DatePicker fx:id="dateCreationPicker" promptText="Date de création" />
-                            <DatePicker fx:id="dateAcceptationPicker" promptText="Date d'acceptation" />
-                            <DatePicker fx:id="dateCloturePicker" promptText="Date de clôture" />
+                        <!-- Troisième ligne -->
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #34495e;" text="Thème *" />
+                            <TextField fx:id="themeField" promptText="Domaine ou thématique"
+                                       style="-fx-font-size: 14px; -fx-padding: 10px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+                        </VBox>
 
-                            <ComboBox fx:id="groupeCombo" promptText="Groupe">
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #34495e;" text="Type *" />
+                            <TextField fx:id="typeField" promptText="Type de projet"
+                                       style="-fx-font-size: 14px; -fx-padding: 10px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+                        </VBox>
+
+                        <!-- Quatrième ligne -->
+                        <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #34495e;" text="License" />
+                            <TextField fx:id="licenseField" promptText="License du projet (MIT, GPL, Apache...)"
+                                       style="-fx-font-size: 14px; -fx-padding: 10px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+                        </VBox>
+
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <Label style="-fx-font-weight: bold; -fx-text-fill: #34495e;" text="Groupe *" />
+                            <ComboBox fx:id="groupeCombo" maxWidth="Infinity" promptText="Sélectionner un groupe"
+                                      style="-fx-font-size: 14px; -fx-padding: 8px;">
                                 <items>
                                     <FXCollections fx:factory="observableArrayList">
                                         <String fx:value="Informatique" />
@@ -71,13 +110,43 @@
                                 </items>
                             </ComboBox>
                         </VBox>
-                  <Button fx:id="ajouterProjetButton" layoutX="534.0" layoutY="507.0" onAction="#ajouterProjet" prefHeight="30.0" prefWidth="152.0" style="-fx-background-color: #2C3E50; -fx-text-fill: white;" text="Ajouter le Projet" />
-                  <Label fx:id="ajouterProjetSucces" layoutX="560.0" layoutY="465.0" />
-                    </children>
-                </AnchorPane>
 
+                        <!-- Options supplémentaires -->
+                        <VBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2">
+                            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                                   text="Options" />
 
-            </children>
-        </AnchorPane>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <CheckBox fx:id="estPublicCheck" style="-fx-font-size: 14px;" text="Projet public" />
+                                <Label style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"
+                                       text="(Cochez si le projet doit être visible publiquement)" />
+                            </HBox>
+                        </VBox>
+                    </GridPane>
+
+                    <!-- Message de statut -->
+                    <Label fx:id="ajouterProjetSucces" style="-fx-font-size: 14px; -fx-padding: 10px;"
+                           text="" wrapText="true" />
+
+                    <!-- Section des boutons -->
+                    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20px 0px 0px 0px;">
+                        <Button fx:id="viderButton"
+                                style="-fx-font-size: 14px; -fx-padding: 12px 25px; -fx-background-color: #95a5a6; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;"
+                                text="Vider le formulaire" />
+
+                        <HBox alignment="CENTER" spacing="10">
+                            <ProgressIndicator fx:id="progressIndicator" maxHeight="20.0" maxWidth="20.0" />
+                            <Button fx:id="ajouterProjetButton"
+                                    style="-fx-font-size: 16px; -fx-padding: 12px 30px; -fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;"
+                                    text="Ajouter le Projet" />
+                        </HBox>
+                    </HBox>
+
+                    <VBox.margin>
+                        <Insets bottom="20" left="20" right="20" top="20" />
+                    </VBox.margin>
+                </VBox>
+            </content>
+        </ScrollPane>
     </center>
 </BorderPane>
