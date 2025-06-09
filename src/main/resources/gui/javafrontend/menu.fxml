@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="600.0" prefWidth="196.0" style="-fx-background-color: #2C3E50"
             xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="gui.javafrontend.MenuController">
 
-    <AnchorPane prefHeight="607.0" prefWidth="194.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+    <AnchorPane prefHeight="607.0" prefWidth="194.0" style="-fx-background-color: #2C3E50;" BorderPane.alignment="CENTER">
         <children>
-            <Button fx:id="accueilButton" layoutY="134.0" mnemonicParsing="false" onAction="#accueil"
-                    prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: transparent;"
-                    text="Accueil" textFill="WHITE">
+            <!-- User Profile Section -->
+            <ImageView fx:id="image1" fitHeight="60.0" fitWidth="60.0" layoutX="67.0" layoutY="20.0"
+                       pickOnBounds="true" preserveRatio="true">
+                <!-- You can add a default user image here if needed -->
+            </ImageView>
+
+            <Label fx:id="nomUser" layoutX="10.0" layoutY="90.0" prefHeight="25.0" prefWidth="176.0"
+                   text="Nom Utilisateur" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+
+            <!-- Navigation Buttons -->
+            <Button fx:id="accueilButton" layoutX="19.0" layoutY="134.0" mnemonicParsing="false" onAction="#goToAccueil"
+                    prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;"
+                    text="🏠 Accueil" textFill="WHITE">
                 <font>
                     <Font size="17.0"/>
                 </font>
@@ -25,9 +38,9 @@
                 </cursor>
             </Button>
 
-            <Button fx:id="profileButton" layoutY="175.0" mnemonicParsing="false" onAction="#profile"
-                    prefHeight="31.0" prefWidth="154.0" style="-fx-background-color: transparent;"
-                    text="Profile" textFill="WHITE">
+            <Button fx:id="profileButton" layoutX="19.0" layoutY="175.0" mnemonicParsing="false" onAction="#goToProfile"
+                    prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;"
+                    text="👤 Profile" textFill="WHITE">
                 <font>
                     <Font size="17.0"/>
                 </font>
@@ -36,9 +49,9 @@
                 </cursor>
             </Button>
 
-            <Button fx:id="calendrierButton" layoutY="211.0" mnemonicParsing="false" onAction="#calendrier"
-                    prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: transparent;"
-                    text="     Calendrier" textFill="WHITE">
+            <Button fx:id="calendrierButton" layoutX="19.0" layoutY="216.0" mnemonicParsing="false" onAction="#goToCalendrier"
+                    prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;"
+                    text="📅 Calendrier" textFill="WHITE">
                 <font>
                     <Font size="17.0"/>
                 </font>
@@ -47,9 +60,9 @@
                 </cursor>
             </Button>
 
-            <Button fx:id="tachesButton" layoutY="248.0" mnemonicParsing="false" onAction="#taches"
-                    prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: transparent;"
-                    text="Tâches" textFill="WHITE">
+            <Button fx:id="tachesButton" layoutX="19.0" layoutY="257.0" mnemonicParsing="false" onAction="#goToTaches"
+                    prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;"
+                    text="✓ Tâches" textFill="WHITE">
                 <font>
                     <Font size="17.0"/>
                 </font>
@@ -58,9 +71,9 @@
                 </cursor>
             </Button>
 
-            <Button fx:id="projetsButton" layoutX="1.0" layoutY="286.0" mnemonicParsing="false" onAction="#projet"
-                    prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: transparent;"
-                    text="Projets " textFill="WHITE">
+            <Button fx:id="projetsButton" layoutX="19.0" layoutY="298.0" mnemonicParsing="false" onAction="#goToProjets"
+                    prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: transparent; -fx-border-radius: 5px;"
+                    text="📋 Projets" textFill="WHITE">
                 <font>
                     <Font size="17.0"/>
                 </font>
@@ -69,11 +82,15 @@
                 </cursor>
             </Button>
 
-            <Button fx:id="deconnexionButton" layoutY="325.0" mnemonicParsing="false" onAction="#deconnexion"
-                    prefHeight="30.0" prefWidth="176.0" style="-fx-background-color: transparent;"
-                    text="     Déconnexion" textFill="WHITE">
+            <!-- Separator Line -->
+            <Separator layoutX="10.0" layoutY="350.0" prefWidth="176.0" style="-fx-background: rgba(255,255,255,0.3);"/>
+
+            <Button fx:id="deconnexionButton" layoutX="19.0" layoutY="370.0" mnemonicParsing="false" onAction="#deconnecter"
+                    prefHeight="30.0" prefWidth="158.0"
+                    style="-fx-background-color: #e74c3c; -fx-border-radius: 5px; -fx-background-radius: 5px;"
+                    text="🚪 Déconnexion" textFill="WHITE">
                 <font>
-                    <Font size="17.0"/>
+                    <Font size="16.0"/>
                 </font>
                 <cursor>
                     <Cursor fx:constant="HAND"/>

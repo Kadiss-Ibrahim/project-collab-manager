@@ -144,6 +144,8 @@ public class AuthService {
         }
     }
 
+
+
     // Classe interne pour la requête d'inscription - Format attendu par le backend
     public static class RegisterRequestDTO {
         private String identifiant;
@@ -303,5 +305,38 @@ public class AuthService {
         }
 
         return builder;
+    }
+
+
+
+    /**
+     * Gets the current authentication token
+     * @return the current token or null if not authenticated
+     */
+    public String getToken() {
+        return currentToken;
+    }
+
+    /**
+     * Sets the authentication token (call this after successful login)
+     * @param token the authentication token
+     */
+    public void setToken(String token) {
+        this.currentToken = token;
+    }
+
+    /**
+     * Clears the authentication token (call this during logout)
+     */
+    public void clearToken() {
+        this.currentToken = null;
+    }
+
+    /**
+     * Checks if there's a valid token
+     * @return true if token exists and is not empty
+     */
+    public boolean hasValidToken() {
+        return currentToken != null && !currentToken.trim().isEmpty();
     }
 }

@@ -21,6 +21,7 @@ module gui.javafrontend {
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
     requires java.sql;
+    requires com.fasterxml.jackson.datatype.jsr310;
 
     opens gui.javafrontend to javafx.fxml;
 
